@@ -1143,17 +1143,10 @@ select {
 	margin-top: -0.5rem;
 	margin-bottom: -0.5rem;
 }
-<<<<<<< HEAD
 .my-4 {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-.mx-6 {
-	margin-left: 1.5rem;
-	margin-right: 1.5rem;
-}
-=======
->>>>>>> aecf8f96b01e087f192d4b4d8f071bea328d79c7
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -2355,10 +2348,6 @@ select {
 
 	.md\:border-l {
 		border-left-width: 1px;
-	}
-
-	.md\:font-bold {
-		font-weight: 700;
 	}
 }
 @media (min-width: 1024px) {
