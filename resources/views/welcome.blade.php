@@ -22,65 +22,60 @@
 
         @livewireStyles
     </head>
-    <body class="antialiased">
-    <nav class="bg-yellow-200 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <!-- Website Logo -->
-                    <div>
-                        <a href="#" class="flex items-center py-4 px-2">
-                            <img src="logo.png" alt="Logo" class="h-8 w-8 mr-2" />
-                            <span class="font-semibold text-gray-500 text-lg"
-                            >Navigation</span
-                            >
-                        </a>
-                    </div>
-                    @if (Route::has('login'))
-                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                            @else
-                                <a href="{{ route('login') }}" class="text-gray-700 px-4 py-2 text-sm">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+    <body class="bg-gray-100 antialiased">
+        <nav class="bg-yellow-200 shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-7">
+                        <!-- Website Logo -->
+                        <div>
+                            <a href="#" class="flex items-center py-4 px-2">
+                                <span class="font-semibold text-black text-lg"
+                                >Navigation</span
+                                >
+                            </a>
                         </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </nav>
+                        @if (Route::has('login'))
+                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                @auth
+                                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        @else
+                                    <a href="{{ route('login') }}" class="text-gray-700 px-4 py-2 text-sm">Log in</a>
 
-
-    <div class="mt-8 bg-white dark:bg-yellow-800 overflow-hidden shadow sm:rounded-lg">
-        <div class="row justify-content-center">
-            <table class="table fixed w-full">
-                <thead class="bg-yellow-500">
-                    <tr>
-                        <th class="px-4 py-2">No</th>
-                        <th class="px-4 py-2">Provinsi</th>
-                        <th class="px-4 py-2">Deskripsi</th>
-                    </tr>
-                </thead>
-
-            </table>
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard umum</div>
-
-                    <div class="card-body">
-                      <livewire:provinsi />
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                    @endif
+                                @endauth
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
+        </nav>
+
+        <div class="py-12">
+            <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                    <div class="grid justify-items-center">
+                                        Daftar Provinsi
+                                    </div>
+                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                        <livewire:provinsi />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-    </div>
+                
+
       @livewireScripts
-      </div>
-    
-       
     </body>
 </html>
