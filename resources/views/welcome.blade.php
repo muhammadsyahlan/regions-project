@@ -55,19 +55,32 @@
     </nav>
 
 
-        <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-8">
-                  <div class="card">
-                      <div class="card-header">Dashboard umum</div>
+    <div class="mt-8 bg-white dark:bg-yellow-800 overflow-hidden shadow sm:rounded-lg">
+        <div class="row justify-content-center">
+            <table class="table fixed w-full">
+                <thead class="bg-yellow-500">
+                    <tr>
+                        <th class="px-4 py-2">No</th>
+                        <th class="px-4 py-2">Provinsi</th>
+                        <th class="px-4 py-2">Deskripsi</th>
+                    </tr>
+                </thead>
 
-                      <div class="card-body">
-                        <livewire:provinsi />
-                      </div>
-                  </div>
-              </div>
-          </div>
+            </table>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Dashboard umum</div>
+
+                    <div class="card-body">
+                      <livewire:provinsi />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      @livewireScripts
       </div>
-        @livewireScripts
+    
+       
     </body>
 </html>
