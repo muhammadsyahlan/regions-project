@@ -1143,6 +1143,7 @@ select {
 	margin-top: -0.5rem;
 	margin-bottom: -0.5rem;
 }
+<<<<<<< HEAD
 .my-4 {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -1151,6 +1152,8 @@ select {
 	margin-left: 1.5rem;
 	margin-right: 1.5rem;
 }
+=======
+>>>>>>> aecf8f96b01e087f192d4b4d8f071bea328d79c7
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -1449,6 +1452,10 @@ select {
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-opacity: 1;
 	border-color: rgba(229, 231, 235, var(--tw-divide-opacity));
+}
+.divide-gray-300 > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-opacity: 1;
+	border-color: rgba(209, 213, 219, var(--tw-divide-opacity));
 }
 .overflow-hidden {
 	overflow: hidden;
@@ -1753,6 +1760,9 @@ select {
 .font-semibold {
 	font-weight: 600;
 }
+.font-normal {
+	font-weight: 400;
+}
 .uppercase {
 	text-transform: uppercase;
 }
@@ -1841,6 +1851,10 @@ select {
 .text-gray-300 {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+.text-black {
+	--tw-text-opacity: 1;
+	color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -2341,6 +2355,10 @@ select {
 
 	.md\:border-l {
 		border-left-width: 1px;
+	}
+
+	.md\:font-bold {
+		font-weight: 700;
 	}
 }
 @media (min-width: 1024px) {
