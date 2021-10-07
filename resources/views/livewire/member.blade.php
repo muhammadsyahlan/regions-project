@@ -1,10 +1,10 @@
 <div class="px-4 py-3 bg-gray-50 text-left sm:px-6">
             <button wire:click="showModal()" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                @if($is_open)
-                    @include('livewire.create')
-                @endif
-                Add Provinsi
+               Add Provinsi
             </button>
+            @if($is_open)
+            @include('livewire.create')
+        @endif
 </div>
 <div class="grid justify-items"  >
     <table class="table-auto divide-y divide-gray-200">
@@ -49,10 +49,10 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <div class="px-4 py-3 bg-gray-50 text-left sm:px-6">
-                        <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                        <button wire:click="edit({{$provinsi->id}})" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
                             Edit
                         </button>
-                        <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <button wire:click="delete({{$provinsi->id}})" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             Delete
                         </button>
                     </div>
