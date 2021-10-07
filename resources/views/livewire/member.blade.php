@@ -1,6 +1,9 @@
 <div class="px-4 py-3 bg-gray-50 text-left sm:px-6">
-            <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Add Provinsi
+            <button wire:click="showModal()" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                @if($is_open)
+                    @include('livewire.create')
+                @endif
+                Add Provinsi
             </button>
 </div>
 <div class="grid justify-items"  >
