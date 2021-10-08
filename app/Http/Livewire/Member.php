@@ -13,9 +13,9 @@ class Member extends Component
 
     public function render()
     {
-        $this->data ['prov'] = Prov::select('*')->get();
+        $this->data = Prov::all();
 
-        return view('livewire.member', $this->data);
+        return view('livewire.member');
     }
 
     public function showModal(){
@@ -24,6 +24,10 @@ class Member extends Component
 
     public function hideModal(){
         $this->is_open = false;
+
+        $this-> postId=null;
+        $this-> title='';
+        $this-> description='';
     }
 
     public function store(){
@@ -33,32 +37,40 @@ class Member extends Component
                 'description' => 'required',
            ]
         );
-    Prov::updateOrCreate(['id' => $this->postId],[
-        'nama_prov' => $this->title,
-        'deskripsi' => $this->description
 
-    ]);
+        Prov::updateOrCreate(['id' => $this->postId],[
+            'nama_prov' => $this->title,
+            'deskripsi' => $this->description
 
-    $this-> hideModal();
+        ]);
 
-    $this-> postId='';
-    $this-> title='';
-    $this-> description='';
+        $this->hideModal();
+
+        session()->flash('info', 'Successfully' );
+
+        $this-> postId=null;
+        $this-> title='';
+        $this-> description='';
+        
+        return redirect()->route('dashboard');
+        
     }
 
     public function edit($id){
 
         $data = Prov::findOrFail($id);
+
         $this->postId = $id;
-        $this->title = $data->title;
-        $this->description = $data->description;
+        $this->title = $data->nama_prov;
+        $this->description = $data->deskripsi;
 
         $this->showModal();
     }
 
     public function delete($id){
 
-        Prov::findOrFail($id)->delete();
+        Prov::find($id)->delete();
+        session()->flash('delete','Successfully Deleted');
 
     }
 
