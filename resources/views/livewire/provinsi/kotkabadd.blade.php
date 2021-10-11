@@ -29,21 +29,11 @@
                                 placeholder="Masukan Nama Kota/Kabupaten" >
                         </div>
 
-                        <div class="mb-5">
-                            <label for="Title" class="block">Nama Provinsi</label>
-                            <select wire:model="prov" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
-                                <option>Pilih Provinsi</option>
-                                @foreach ($dataProv as $prov)
-                                    <option value="{{$prov}}">{{$prov}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         <div class="mb-2">
-                            <label for="Title" class="block">Deskripsi Kota / Kabupaten</label>
+                            <label for="Title" class="block">Deskripsi Provinsi</label>
                             <textarea wire:model="description"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900"
-                                placeholder="Masukan Kota / Kabupaten">
+                                placeholder="Masukan Deskripsi Provinsi">
                             </textarea>
                         </div>
                     </div>

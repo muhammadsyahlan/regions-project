@@ -15,7 +15,7 @@
                                         Add Provinsi
                                     </button>
                                     @if ($is_open)
-                                        @include('livewire.create')
+                                        @include('livewire.provinsi.create')
                                     @endif
                                     @if (session()->has('info'))
                                         <div class="bg-green-500 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
@@ -56,7 +56,7 @@
                                             </tr>
                                         </thead>
 
-                                        
+
                                         <!-- penomoran otomatis -->
                                         @php
                                             $no = 1;
@@ -85,19 +85,49 @@
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="px-4 py-3 bg-gray-50 text-left sm:px-6">
-                                                            <button wire:click="edit({{ $provinsi->id }})" type="button"
+                                                            <button wire:click="edit({{ $provinsi->id }})"
+                                                                type="button"
                                                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
                                                                 Edit
                                                             </button>
+
                                                             <button wire:click="delete({{ $provinsi->id }})"
                                                                 type="button"
                                                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                                                 Delete
                                                             </button>
+
+                                                            <button wire:click="view({{ $provinsi->id }})"
+                                                                type="button"
+                                                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                                                View
+                                                            </button>
+
+                                                            <button wire:click="add({{ $provinsi->id }})"
+                                                                type="button"
+                                                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                                Add
+                                                            </button>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                            @if ($is_view)
+
+                                                @foreach ($dataView as $kotkab)
+
+                                                    <tr>
+                                                        <td>{{ $kotkab->nama_kotkab }}</td>
+                                                    </tr>
+
+
+                                                @endforeach
+                                            @endif
+
+                                            @if ($is_add)
+                                                @include('livewire.provinsi.kotkabadd')
+                                            @endif
+
                                         </tbody>
                                     </table>
 

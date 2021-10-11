@@ -10,6 +10,10 @@ class Provinsi extends Component
     public $data;
     public $is_open = 0;
     public $postId, $title, $description;
+    public $is_view = 0;
+    public $is_add = 0;
+    public $dataView;
+
 
     public function render()
     {
@@ -18,27 +22,30 @@ class Provinsi extends Component
         return view('livewire.provinsi');
     }
 
-    public function showModal(){
+    public function showModal()
+    {
         $this->is_open = true;
     }
 
-    public function hideModal(){
+    public function hideModal()
+    {
         $this->is_open = false;
 
-        $this-> postId=null;
-        $this-> title='';
-        $this-> description='';
+        $this->postId = null;
+        $this->title = '';
+        $this->description = '';
     }
 
-    public function store(){
-       $this->validate(
-           [
+    public function store()
+    {
+        $this->validate(
+            [
                 'title' => 'required',
                 'description' => 'required',
-           ]
+            ]
         );
 
-        Prov::updateOrCreate(['id' => $this->postId],[
+        Prov::updateOrCreate(['id' => $this->postId], [
             'nama_prov' => $this->title,
             'deskripsi' => $this->description
 
@@ -46,17 +53,18 @@ class Provinsi extends Component
 
         $this->hideModal();
 
-        session()->flash('info', 'Successfully' );
+        session()->flash('info', 'Successfully');
 
-        $this-> postId=null;
-        $this-> title='';
-        $this-> description='';
-        
+        $this->postId = null;
+        $this->title = '';
+        $this->description = '';
+
         //return redirect()->route('dashboard');
-        
+
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
         $data = Prov::findOrFail($id);
 
@@ -67,11 +75,44 @@ class Provinsi extends Component
         $this->showModal();
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         Prov::find($id)->delete();
-        session()->flash('delete','Successfully Deleted');
-
+        session()->flash('delete', 'Successfully Deleted');
     }
 
+    public function showView()
+    {
+        $this->is_view = true;
+    }
+
+    public function view($id)
+    {
+
+        $this->showView();
+
+        $this->dataView = Prov::select('*')->join('kotkab', 'prov.id', '=', 'kotkab.prov_id')->where('prov_id', $id)->get();
+    }
+
+ 
+
+    public function showAdd()
+    {
+        $this->is_add = true;
+    }
+
+    public function hideAdd()
+    {
+        $this->is_add = false;
+
+        $this->postId = null;
+        $this->title = '';
+        $this->description = '';
+    }
+
+    public function add($id)
+    {
+
+    }
 }
