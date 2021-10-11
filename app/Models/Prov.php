@@ -9,6 +9,6 @@ class Prov extends Model
 {
     use HasFactory;
     protected $table="prov";
-    protected $fillable=["id","nama_prov","deskripsi"];
+    protected $fillable=["id","nama_prov","deskripsi","created_at","updated_at"];
 
 }

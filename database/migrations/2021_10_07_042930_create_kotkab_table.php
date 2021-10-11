@@ -14,11 +14,10 @@ class CreateKotkabTable extends Migration
     public function up()
     {
         Schema::create('kotkab', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_kk');
             $table->integer('prov_id');
-            $table->boolean('is_kota');
             $table->string('nama_kotkab');
-            $table->text('deskripsi');
+            $table->text('desk_kk');
             $table->timestamps();
         });
     }
