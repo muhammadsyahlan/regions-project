@@ -52,7 +52,7 @@ class Member extends Component
         $this-> title='';
         $this-> description='';
         
-        return redirect()->route('dashboard');
+        //return redirect()->route('dashboard');
         
     }
 

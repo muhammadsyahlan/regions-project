@@ -40,13 +40,15 @@
                 </th>
             </tr>
         </thead>
-        
+        @php
+            $no=1;
+        @endphp
         <tbody class="bg-white divide-y divide-gray-200">
             @foreach($data as $provinsi)
                 <tr>
                     <td class="px-6 py-4 text-center whitespace-nowrap">
                         
-                            {{$provinsi->id}}
+                            {{$no++}}
                                             
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
