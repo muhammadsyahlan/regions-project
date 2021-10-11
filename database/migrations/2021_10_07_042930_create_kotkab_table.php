@@ -14,7 +14,7 @@ class CreateKotkabTable extends Migration
     public function up()
     {
         Schema::create('kotkab', function (Blueprint $table) {
-            $table->increments('id_kk');
+            $table->increments('id');
             $table->integer('prov_id');
             $table->string('nama_kotkab');
             $table->text('desk_kk');

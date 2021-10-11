@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Member;
 use App\Http\Livewire\Kotkab;
+use App\Http\Livewire\Provinsi;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/member', Member::class);
+Route::get('/member', Member::class)->name('member');
 
-Route::get('/kotkab', Kotkab::class);
+Route::get('/provinsi', Provinsi::class)->name('provinsi');
+
+Route::get('/kotkab', Kotkab::class)->name('kotkab');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
