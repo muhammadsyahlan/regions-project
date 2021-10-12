@@ -14,11 +14,11 @@ class Person extends Model
     
     public function prov()
     {
-        return $this->belongsTo(Prov::class);
+        return $this->belongsTo(Prov::class,'prov_id','id');
     }
 
     public function kotkab()
     {
-        return $this->belongsTo(Koka::class);
+        return $this->belongsTo(Koka::class,'kotkab_id','id');
     }
 }

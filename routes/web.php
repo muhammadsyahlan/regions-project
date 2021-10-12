@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Member;
 use App\Http\Livewire\Kotkab;
 use App\Http\Livewire\Provinsi;
+use App\Http\Livewire\Personal;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::get('/provinsi', Provinsi::class)->name('provinsi');
 
 Route::get('/kotkab', Kotkab::class)->name('kotkab');
 
+Route::get('/personal', Personal::class)->name('personal');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+ 

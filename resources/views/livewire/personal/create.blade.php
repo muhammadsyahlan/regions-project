@@ -7,36 +7,61 @@
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <form>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+
+
                     <div>
-                        <h1 class="font-bold text-center mb-4">Add Kota / Kabupaten</h1>
+                        <h1 class="font-bold text-center mb-4">Add Data Diri</h1>
                     </div>
 
                     <div>
                         <div class="mb-5">
-                            <input wire:model="postId" type="hidden" 
+                            <input wire:model="postId" type="hidden"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                         </div>
 
                         <div class="mb-5">
-                            <label for="Title" class="block">Nama Kota/Kabupaten</label>
-                            <input wire:model="title" type="text" 
+                            <label for="Title" class="block">Nama Lengkap</label>
+                            <input wire:model="title" type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900"
-                                placeholder="Masukan Nama Kota/Kabupaten" >
+                                placeholder="Masukan Nama Lengkap">
                         </div>
 
                         <div class="mb-5">
-                            <label for="Title" class="block">Nama Provinsi</label>
-                            <select wire:model="prov" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
-                                <option>Pilih Provinsi</option>
-                                @foreach ($dataProv as $prov)
-                                    <option value="{{$prov}}">{{$prov}}</option>
-                                @endforeach
-                            </select>
+                            <label for="Title" class="block">Jenis Kelamin</label>
+                            <div class="mt-2">
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input wire:model="jkradio" type="radio" class="form-radio" name="radio"
+                                            value="1" checked>
+                                        <span class="ml-2">Laki-Laki</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input wire:model="jkradio" type="radio" class="form-radio" name="radio"
+                                            value="0">
+                                        <span class="ml-2">Perempuan</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
+                        <div class="mb-5">
+                            <label for="Title" class="block">Golongan Darah</label>
+                            <div class="mt-2">
+                                <select wire:model="goldar"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
+                                    <option>Pilih Golongan Darah</option>
+                                    <option value="a">A</option>
+                                    <option value="b">B</option>
+                                    <option value="ab">AB</option>
+                                    <option value="o">O</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <div class="mb-2">
                             <label for="Title" class="block">Deskripsi Kota / Kabupaten</label>
                             <textarea wire:model="description"

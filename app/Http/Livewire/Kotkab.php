@@ -15,12 +15,12 @@ class Kotkab extends Component
 
     public function render()
     {
-        $this->data = Prov::select('*')->join('kotkab', 'prov.id','=', 'kotkab.prov_id')->get();
+        $this->data = Koka::with('prov')->get();
         
-        $this->dataProv = Prov::pluck('nama_prov','nama_prov');
+        $this->dataProv = Prov::pluck('nama_prov');
 
         return view('livewire.kotkab');
-    }
+    } 
 
     public function showModal(){
         $this->is_open = true;

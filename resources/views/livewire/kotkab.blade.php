@@ -14,7 +14,7 @@
                                     Add Kota / Kabupaten
                                     </button>
                                     @if($is_open)
-                                        @include('livewire.kotkab.create')
+                                        @include('livewire.kotkab.create') 
                                     @endif
                                     @if(session()->has('info'))
                                         <div class="bg-green-500 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
@@ -74,7 +74,7 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
                                                         
-                                                            {{$kotkab->nama_prov}}
+                                                            {{$kotkab->prov->nama_prov}}
                                                         
                                                         </div>
                                                     </td>

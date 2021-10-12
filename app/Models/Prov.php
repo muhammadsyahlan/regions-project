@@ -11,4 +11,14 @@ class Prov extends Model
     protected $table="prov";
     protected $fillable=["id","nama_prov","deskripsi","created_at","updated_at"];
 
+    public function koka()
+    {
+        return $this->hasMany(Koka::class);
+    }
+
+    public function person()
+    {
+        return $this->hasMany(Person::class);
+    }
+
 }

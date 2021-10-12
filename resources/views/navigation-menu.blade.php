@@ -204,6 +204,18 @@
                     </x-jet-responsive-nav-link>
                 @endif
 
+                <div class="block px-4 py-2 text-xs text-gray-400">
+                    {{ __('Master Data') }}
+                </div>
+
+                <x-jet-dropdown-link href="{{ route('provinsi') }}">
+                    {{ __('Provinsi') }}
+                </x-jet-dropdown-link>
+
+                <x-jet-dropdown-link href="{{ route('kotkab') }}">
+                    {{ __('Kota / Kabupaten') }}
+                </x-jet-dropdown-link>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
