@@ -9,7 +9,7 @@ class Koka extends Model
 {
     use HasFactory;
     protected $table="kotkab";
-    protected $fillable=["id_kk","prov_id","nama_kotkab","desk_kk","created_at","updated_at"];
+    protected $fillable=["id","prov_id","nama_kotkab","desk_kk","created_at","updated_at"];
 
     public function post()
     {
