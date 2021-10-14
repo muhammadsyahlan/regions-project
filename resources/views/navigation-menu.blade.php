@@ -99,6 +99,10 @@
                                 {{ __('Kota / Kabupaten') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('personal') }}">
+                                {{ __('Identitas') }}
+                            </x-jet-dropdown-link>
+
                             
                         </x-slot>
                     </x-jet-dropdown>
@@ -214,6 +218,10 @@
 
                 <x-jet-dropdown-link href="{{ route('kotkab') }}">
                     {{ __('Kota / Kabupaten') }}
+                </x-jet-dropdown-link>
+
+                <x-jet-dropdown-link href="{{ route('personal') }}">
+                    {{ __('Identitas') }}
                 </x-jet-dropdown-link>
 
                 <!-- Authentication -->
