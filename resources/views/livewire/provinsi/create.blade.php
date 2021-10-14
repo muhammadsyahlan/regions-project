@@ -7,7 +7,8 @@
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <form>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 
@@ -18,15 +19,15 @@
 
                     <div>
                         <div class="mb-5">
-                            <input wire:model="postId" type="hidden" 
+                            <input wire:model="postId" type="hidden"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                         </div>
 
                         <div class="mb-5">
                             <label for="Title" class="block">Nama Provinsi</label>
-                            <input wire:model="title" type="text" 
+                            <input wire:model="title" type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900"
-                                placeholder="Masukan Nama Provinsi" >
+                                placeholder="Masukan Nama Provinsi">
                         </div>
 
                         <div class="mb-2">
@@ -36,6 +37,13 @@
                                 placeholder="Masukan Deskripsi Provinsi">
                             </textarea>
                         </div>
+
+                        <div class="mb-2">
+                            <label for="Title" class="block">Upload Logo</label>
+                            <input wire:model="logo" type="file">
+                            @error('logo') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

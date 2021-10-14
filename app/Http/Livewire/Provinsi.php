@@ -3,13 +3,18 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Prov;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
+use App\Models\Prov;
 class Provinsi extends Component
 {
+
+    use WithFileUploads;
+
     public $data;
     public $is_open = 0;
-    public $postId, $title, $description;
+    public $postId, $title, $description, $logo;
     public $is_view = 0;
     public $is_add = 0;
     public $dataView;
@@ -42,14 +47,32 @@ class Provinsi extends Component
             [
                 'title' => 'required',
                 'description' => 'required',
+                'logo' => 'required|mimes:jpg,jpeg,png',
             ]
         );
 
+        
+        /*
+        $logoNama=$this->logo->storeAs('photos');
+        $logoUpload= 'img/';
+        $logoNama->move($logoUpload,$logoNama->getClientOriginalName());
+
         Prov::updateOrCreate(['id' => $this->postId], [
             'nama_prov' => $this->title,
-            'deskripsi' => $this->description
+            'deskripsi' => $this->description,
+            'logo' => $logoUpload."".$logoNama->getClientOriginalName()
 
         ]);
+        */
+
+        $filename = $this->logo->store('public/prov');
+
+        Prov::updateOrCreate(['id' => $this->postId], [
+            'nama_prov' => $this->title,
+            'deskripsi' => $this->description,
+            'logo' => $filename
+        ]);
+
 
         $this->hideModal();
 
@@ -71,6 +94,7 @@ class Provinsi extends Component
         $this->postId = $id;
         $this->title = $data->nama_prov;
         $this->description = $data->deskripsi;
+        $this->logo = $data->logo;
 
         $this->showModal();
     }
@@ -114,5 +138,14 @@ class Provinsi extends Component
     public function add($id)
     {
 
+    }
+
+    private function generateHashNameWithOriginalNameEmbedded($file)
+    {
+        $hash = Str::random(30);
+        $meta = '-meta' . base64_encode($file->getClientOriginalName()) . '-';
+        $extension = '.' . $file->guessExtension();
+
+        return $hash . $meta . $extension;
     }
 }

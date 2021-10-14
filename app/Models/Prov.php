@@ -9,7 +9,7 @@ class Prov extends Model
 {
     use HasFactory;
     protected $table="prov";
-    protected $fillable=["id","nama_prov","deskripsi","created_at","updated_at"];
+    protected $fillable=["id","nama_prov","deskripsi","created_at","updated_at","logo"];
 
     public function koka()
     {

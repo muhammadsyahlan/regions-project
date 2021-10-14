@@ -4,19 +4,25 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Person;
-//use App\Models\Koka;
+use App\Models\Prov;
+use App\Models\Koka;
 
 
 class Personal extends Component
 {
     public $data;
     public $is_open = 0;
-    public $postId, $title, $description;
+    public $postId, $title, $jkradio, $goldar, $alamat, $kotkab, $prov, $hobby, $description;
+    public $dataKotkab, $dataProv;
 
 
     public function render()
     {
         $this->data = Person::with('prov','kotkab')->get();
+
+        $this->dataProv = Prov::pluck('nama_prov');
+
+        $this->dataKotkab = Koka::pluck('nama_kotkab');
         
 
         return view('livewire.personal');
