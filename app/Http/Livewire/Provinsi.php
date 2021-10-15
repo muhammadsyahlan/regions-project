@@ -5,8 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
-
 use App\Models\Prov;
+
 class Provinsi extends Component
 {
 

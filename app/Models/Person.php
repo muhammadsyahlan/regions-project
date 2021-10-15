@@ -10,7 +10,7 @@ class Person extends Model
     use HasFactory;
 
     protected $table="personal";
-    protected $fillable=["id","prov_id","kotkab_id","nama","gender","goldar","hobby","alamat","keterangan","created_at","updated_at"];
+    protected $fillable=["id","prov_id","kotkab_id","nama","gender","goldar","hobby_id","alamat","keterangan","created_at","updated_at"];
     
     public function prov()
     {
@@ -20,5 +20,10 @@ class Person extends Model
     public function kotkab()
     {
         return $this->belongsTo(Koka::class,'kotkab_id','id');
+    }
+
+    public function hobby()
+    {
+        return $this->belongsTo(Hobb::class,'hobby_id','id');
     }
 }

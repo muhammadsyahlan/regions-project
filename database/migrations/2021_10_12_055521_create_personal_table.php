@@ -20,7 +20,7 @@ class CreatePersonalTable extends Migration
             $table->string('nama');
             $table->boolean('gender');
             $table->enum('goldar', ['a', 'b', 'ab', 'o']);
-            $table->string('hobby');
+            $table->integer('hobby_id');
             $table->text('alamat');
             $table->longText('keterangan');
             $table->timestamps();

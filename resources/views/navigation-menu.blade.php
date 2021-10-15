@@ -102,6 +102,10 @@
                             <x-jet-dropdown-link href="{{ route('personal') }}">
                                 {{ __('Identitas') }}
                             </x-jet-dropdown-link>
+                            
+                            <x-jet-dropdown-link href="{{ route('hobby') }}">
+                                {{ __('Hobby') }}
+                            </x-jet-dropdown-link>
 
                             
                         </x-slot>
@@ -223,6 +227,11 @@
                 <x-jet-dropdown-link href="{{ route('personal') }}">
                     {{ __('Identitas') }}
                 </x-jet-dropdown-link>
+
+                <x-jet-dropdown-link href="{{ route('hobby') }}">
+                    {{ __('Hobby') }}
+                </x-jet-dropdown-link>
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
