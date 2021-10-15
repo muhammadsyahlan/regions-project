@@ -6,23 +6,26 @@ use Livewire\Component;
 use App\Models\Person;
 use App\Models\Prov;
 use App\Models\Koka;
+use App\Models\Hobb;
 
 
 class Personal extends Component
 {
     public $data;
     public $is_open = 0;
-    public $postId, $title, $jkradio, $goldar, $alamat, $kotkab, $prov, $hobby, $description;
-    public $dataKotkab, $dataProv;
+    public $postId, $title, $jkradio, $goldar, $alamat, $kotkab, $prov, $hobby;
+    public $dataKotkab, $dataProv, $dataHob;
 
 
     public function render()
     {
-        $this->data = Person::with('prov','kotkab')->get();
+        $this->data = Person::with('prov','kotkab','hobby')->get();
 
-        $this->dataProv = Prov::pluck('nama_prov');
+        $this->dataProv = Prov::get();
 
-        $this->dataKotkab = Koka::pluck('nama_kotkab');
+        $this->dataKotkab = Koka::get();
+
+        $this->dataHob = Hobb::get();
         
 
         return view('livewire.personal');
@@ -39,7 +42,12 @@ class Personal extends Component
 
         $this->postId = null;
         $this->title = '';
-        $this->description = '';
+        $this->jkradio = '';
+        $this->goldar = '';
+        $this->alamat = '';
+        $this->kotkab = '';
+        $this->prov = '';
+        $this->hobby = '';
     }
 
     public function store()
@@ -47,14 +55,24 @@ class Personal extends Component
         $this->validate(
             [
                 'title' => 'required',
-                'description' => 'required',
+                'jkradio' => 'required',
+                'goldar' => 'required',
+                'alamat' => 'required',
+                'kotkab' => 'required',
+                'prov' => 'required',
+                'hobby' => 'required',
             ]
         );
 
         Person::updateOrCreate(['id' => $this->postId], [
-            'nama_prov' => $this->title,
-            'deskripsi' => $this->description
-
+            'nama' => $this->title,
+            'gender' => $this->jkradio,
+            'goldar' => $this->goldar,
+            'alamat' => $this->alamat,
+            'kotkab_id' => $this->kotkab,
+            'prov_id' => $this->prov,
+            'hobby_id' => $this->hobby,
+            'keterangan' => ''
         ]);
 
         $this->hideModal();
@@ -63,7 +81,12 @@ class Personal extends Component
 
         $this->postId = null;
         $this->title = '';
-        $this->description = '';
+        $this->jkradio = '';
+        $this->goldar = '';
+        $this->alamat = '';
+        $this->kotkab = '';
+        $this->prov = '';
+        $this->hobby = '';
 
         //return redirect()->route('dashboard');
 
@@ -75,8 +98,13 @@ class Personal extends Component
         $data = Person::findOrFail($id);
 
         $this->postId = $id;
-        $this->title = $data->nama_prov;
-        $this->description = $data->deskripsi;
+        $this->title = $data->nama;
+        $this->jkradio = $data->gender;
+        $this->goldar = $data->goldar;
+        $this->alamat = $data->alamat;
+        $this->kotkab = $data->kotkab_id;
+        $this->prov = $data->prov_id;
+        $this->hobby = $data->hobby_id;
 
         $this->showModal();
     }

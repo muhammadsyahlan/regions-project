@@ -76,7 +76,7 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                                 <option>Pilih Kota / Kabupaten</option>
                                 @foreach ($dataKotkab as $kotkab)
-                                    <option value="{{ $kotkab }}">{{ $kotkab }}</option>
+                                    <option value="{{ $kotkab->id }}">{{ $kotkab->nama_kotkab }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -87,24 +87,22 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                                 <option>Pilih Provinsi</option>
                                 @foreach ($dataProv as $prov)
-                                    <option value="{{ $prov }}">{{ $prov }}</option>
+                                    <option value="{{ $prov->id }}">{{ $prov->nama_prov }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="mb-2">
                             <label for="Title" class="block">Hobby</label>
-                            <textarea wire:model="hobby"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900"
-                                placeholder="Masukan Hobby">
-                            </textarea>
+                            <div>
+                                @foreach ($dataHob as $hobby)                             
+                                    <label class="inline-flex items-center">
+                                    <input wire:model="hobby" type="checkbox" class="form-checkbox" value="{{ $hobby->id }}">
+                                    <span class="ml-2">{{ $hobby->hobby_desk }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
                         </div>
-
-                        <div class="mb-2">
-                            <label for="Title" class="block">Keterangan</label>
-                            <div wire:model="description" id="summernote"></div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -121,19 +119,3 @@
         </div>
     </div>
 </div>
-<script>
-    $('#summernote').summernote({
-      placeholder: 'Hello stand alone ui',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
-    });
-  </script>
