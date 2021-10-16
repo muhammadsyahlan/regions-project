@@ -39,6 +39,7 @@ class Provinsi extends Component
         $this->postId = null;
         $this->title = '';
         $this->description = '';
+        $this->logo = '';
     }
 
     public function store()
@@ -81,6 +82,7 @@ class Provinsi extends Component
         $this->postId = null;
         $this->title = '';
         $this->description = '';
+        $this->logo = '';
 
         //return redirect()->route('dashboard');
 

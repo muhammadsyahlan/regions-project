@@ -13,7 +13,8 @@ class Personal extends Component
 {
     public $data;
     public $is_open = 0;
-    public $postId, $title, $jkradio, $goldar, $alamat, $kotkab, $prov, $hobby;
+    public $postId, $title, $jkradio, $goldar, $alamat, $kotkab, $prov;
+    public $hobby = [];
     public $dataKotkab, $dataProv, $dataHob;
 
 
@@ -71,7 +72,7 @@ class Personal extends Component
             'alamat' => $this->alamat,
             'kotkab_id' => $this->kotkab,
             'prov_id' => $this->prov,
-            'hobby_id' => $this->hobby,
+            'hobby_id' => implode(",",$this->hobby) ,
             'keterangan' => ''
         ]);
 

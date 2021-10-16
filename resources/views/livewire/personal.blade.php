@@ -142,7 +142,7 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
 
-                                                            {{ $personal->hobby->hobby_desk }}
+                                                            {{ $personal->hobby_id }}
 
                                                         </div>
                                                     </td>

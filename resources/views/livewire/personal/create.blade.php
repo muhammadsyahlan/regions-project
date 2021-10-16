@@ -97,7 +97,7 @@
                             <div>
                                 @foreach ($dataHob as $hobby)                             
                                     <label class="inline-flex items-center">
-                                    <input wire:model="hobby" type="checkbox" class="form-checkbox" value="{{ $hobby->id }}">
+                                    <input wire:model.lazy="hobby" type="checkbox" class="form-checkbox" value="{{ $hobby->hobby_desk }}" checked>
                                     <span class="ml-2">{{ $hobby->hobby_desk }}</span>
                                     </label>
                                 @endforeach
