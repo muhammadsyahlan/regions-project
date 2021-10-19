@@ -73,7 +73,6 @@ class Personal extends Component
             'kotkab_id' => $this->kotkab,
             'prov_id' => $this->prov,
             'hobby_id' => implode(",",$this->hobby) ,
-            'keterangan' => ''
         ]);
 
         $this->hideModal();
@@ -105,7 +104,7 @@ class Personal extends Component
         $this->alamat = $data->alamat;
         $this->kotkab = $data->kotkab_id;
         $this->prov = $data->prov_id;
-        $this->hobby = $data->hobby_id;
+        $this->hobby = explode(",",$data->hobby_id);
 
         $this->showModal();
     }

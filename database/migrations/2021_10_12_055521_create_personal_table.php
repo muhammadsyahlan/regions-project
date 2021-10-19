@@ -22,7 +22,7 @@ class CreatePersonalTable extends Migration
             $table->enum('goldar', ['a', 'b', 'ab', 'o']);
             $table->string('hobby_id');
             $table->text('alamat');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

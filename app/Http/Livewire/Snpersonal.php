@@ -8,6 +8,7 @@ use App\Models\Person;
 class Snpersonal extends Component
 {
     public $data;
+    public $postId, $keterangan;
 
     public function render()
     {
@@ -17,6 +18,21 @@ class Snpersonal extends Component
 
     public function mount($id)
     {
+        
         $this->data = Person::find($id);
+
+        $this->postId = $id;
+    }
+
+    public function store()
+    {
+        
+        //dd($this->keterangan);
+        Person::updateOrCreate(['id' => $this->postId], [
+            'keterangan' => $this->keterangan
+        ]);
+
+        redirect()->route('personal');
+
     }
 }

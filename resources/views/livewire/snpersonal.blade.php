@@ -9,18 +9,23 @@
                                 Masukkan Keterangan
                             </div>
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mb-4">
-                                <div>
-                                    <div id="summernote"></div>
-                                </div>
-                                
-                                <a href="{{ route('personal') }}"
-                                    class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                    Back
-                                </a>
-                                <button wire:click.prevent="store()" type="submit"
-                                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                    Submit
-                                </button>
+                                <form>
+                                    <div class="mb-5">
+                                        <input wire:model="postId" type="hidden"
+                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
+                                    </div>
+                                    <div wire:ignore>
+                                        <textarea type="text" input="keterangan" id="summernote" class="form-control summernote"></textarea>
+                                    </div>                                    
+                                    <a href="{{ route('personal') }}"
+                                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                        Back
+                                    </a>
+                                    <button wire:click.prevent="store()" type="submit"
+                                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                        Submit
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -31,18 +36,23 @@
 </div>
 
 <script>
-    $('#summernote').summernote({
-      placeholder: 'Masukkan Keterangan',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
-    });
+   $('.summernote').summernote({
+        placeholder: 'Masukkan Keterangan',
+        tabsize: 2,
+        height: 200,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+        callbacks: {
+            onChange: function(contents) {
+            @this.set('keterangan', contents);
+        }
+  }
+  });
   </script>  
