@@ -117,5 +117,11 @@ class Personal extends Component
         session()->flash('delete', 'Successfully Deleted');
     }
 
+    public function input($id)
+    {
+
+        redirect()->route('snpersonal',['id' => $id]);
+    }
+
     
 }

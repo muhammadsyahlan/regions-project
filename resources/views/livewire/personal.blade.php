@@ -149,10 +149,12 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
 
-                                                            <a href="{{ route('snpersonal') }}"
+                                                            <button wire:click="input({{ $personal->id }})"
+                                                                type="button"
                                                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                                                 Input
-                                                            </a>
+                                                            </button>
+                                    
                                                         </div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">

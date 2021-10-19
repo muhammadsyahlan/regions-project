@@ -30,7 +30,7 @@ Route::get('/provinsi', Provinsi::class)->name('provinsi');
 Route::get('/kotkab', Kotkab::class)->name('kotkab');
 
 Route::get('/personal', Personal::class)->name('personal');
-Route::get('/personal/summernote', Snpersonal::class)->name('snpersonal');
+Route::get('/personal/summernote/{id}', Snpersonal::class)->name('snpersonal');
 
 Route::get('/hobby', Hobby::class)->name('hobby');
 
