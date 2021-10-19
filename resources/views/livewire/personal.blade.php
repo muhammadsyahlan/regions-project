@@ -155,7 +155,7 @@
                                                                 Input
                                                             </button>
                                                         @else
-                                                            {{ $personal->keterangan }}
+                                                            {!!$personal->keterangan!!}
                                                         @endif
                                                             
                                     
