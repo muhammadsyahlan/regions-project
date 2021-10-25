@@ -122,5 +122,11 @@ class Personal extends Component
         redirect()->route('snpersonal',['id' => $id]);
     }
 
+    public function view($id)
+    {
+
+        redirect()->route('vpersonal',['id' => $id]);
+    }
+
     
 }

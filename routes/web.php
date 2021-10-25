@@ -7,6 +7,7 @@ use App\Http\Livewire\Provinsi;
 use App\Http\Livewire\Personal;
 use App\Http\Livewire\Hobby;
 use App\Http\Livewire\Snpersonal;
+use App\Http\Livewire\Vpersonal;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/kotkab', Kotkab::class)->name('kotkab');
 
 Route::get('/personal', Personal::class)->name('personal');
 Route::get('/personal/summernote/{id}', Snpersonal::class)->name('snpersonal');
+Route::get('/personal/view/{id}', Vpersonal::class)->name('vpersonal');
 
 Route::get('/hobby', Hobby::class)->name('hobby');
 
