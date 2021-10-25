@@ -51,8 +51,8 @@
         ],
         callbacks: {
             onChange: function(contents) {
-            @this.set('keterangan', contents);
+                @this.set('keterangan', contents);
+            }
         }
-  }
   });
   </script>  

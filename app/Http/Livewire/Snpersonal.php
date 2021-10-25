@@ -31,31 +31,37 @@ class Snpersonal extends Component
     {
         //$filename = $this->logo->store('public/prov');
 
+        
         $content = $this->keterangan;
         $dom = new \DOMDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('img');
-        $storage = "public/person/";
+        
     
         foreach($imageFile as $item => $image){
             $data = $image->getAttribute('src');
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= time().$item.'.png';
-            $path = $storage . $image_name;
+            $imageData = base64_decode($data);
+            $image_name= "/storage/public/person/".time().$item.'.png';
+            $path = public_path() . $image_name;
+            //$imageData->store($path);
+            file_put_contents($path, $imageData);
             
-            $new_src=asset($path);
+            $new_src=asset($image_name);
             $image->removeAttribute('src');
             $image->setAttribute('src', $new_src);
+
             }
     
         $content = $dom->saveHTML();
+        //$content->store('public');
+        
         $post = Person::updateOrCreate(['id' => $this->postId], [
             'keterangan' => $content
         ]);
     
-        dd($post->toArray());
+        $post->toArray();
 
         //dd($this->keterangan);
         /*Person::updateOrCreate(['id' => $this->postId], [
