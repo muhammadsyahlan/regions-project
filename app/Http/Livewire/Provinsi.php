@@ -108,20 +108,13 @@ class Provinsi extends Component
         session()->flash('delete', 'Successfully Deleted');
     }
 
-    public function showView()
-    {
-        $this->is_view = true;
-    }
-
     public function view($id)
     {
 
-        $this->showView();
-
-        $this->dataView = Prov::select('*')->join('kotkab', 'prov.id', '=', 'kotkab.prov_id')->where('prov_id', $id)->get();
+        redirect()->route('vprovinsi',['id' => $id]);
     }
 
- 
+    
 
     public function showAdd()
     {
