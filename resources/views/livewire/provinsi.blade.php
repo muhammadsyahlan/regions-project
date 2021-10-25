@@ -121,18 +121,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            @if ($is_view)
-
-                                                @foreach ($dataView as $kotkab)
-
-                                                    <tr>
-                                                        <td>{{ $kotkab->nama_kotkab }}</td>
-                                                    </tr>
-
-
-                                                @endforeach
-                                            @endif
-
                                             @if ($is_add)
                                                 @include('livewire.provinsi.kotkabadd')
                                             @endif
