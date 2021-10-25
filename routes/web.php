@@ -8,6 +8,7 @@ use App\Http\Livewire\Personal;
 use App\Http\Livewire\Hobby;
 use App\Http\Livewire\Snpersonal;
 use App\Http\Livewire\Vpersonal;
+use App\Http\Livewire\Vprovinsi;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/', function () {
 Route::get('/member', Member::class)->name('member');
 
 Route::get('/provinsi', Provinsi::class)->name('provinsi');
+Route::get('/provinsi/view/{id}', Vprovinsi::class)->name('vprovinsi');
 
 Route::get('/kotkab', Kotkab::class)->name('kotkab');
 
