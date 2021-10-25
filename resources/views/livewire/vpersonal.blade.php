@@ -20,7 +20,7 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
 
-                                                        {{ $data->nama }}
+                                                        {{ strtoupper($data->nama )}}
 
                                                         </div>
                                                     </td>
@@ -53,7 +53,7 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
 
-                                                        {{ $data->goldar }}
+                                                        {{ strtoupper($data->goldar) }}
 
                                                         </div>
                                                     </td>

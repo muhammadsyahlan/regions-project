@@ -25,6 +25,8 @@ class Snpersonal extends Component
         $this->data = Person::find($id);
 
         $this->postId = $id;
+
+        $this->keterangan = $this->data->keterangan;
     }
 
     public function store()
