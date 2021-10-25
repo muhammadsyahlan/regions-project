@@ -4,8 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Str;
 use App\Models\Prov;
+use App\Models\Koka;
 
 class Provinsi extends Component
 {
@@ -18,6 +18,7 @@ class Provinsi extends Component
     public $is_view = 0;
     public $is_add = 0;
     public $dataView;
+    public $idProv;
 
 
     public function render()
@@ -84,7 +85,7 @@ class Provinsi extends Component
         $this->description = '';
         $this->logo = '';
 
-        //return redirect()->route('dashboard');
+       
 
     }
 
@@ -132,15 +133,40 @@ class Provinsi extends Component
 
     public function add($id)
     {
+        $this->showAdd();
+
+        $this->idProv = $id;
 
     }
 
-    private function generateHashNameWithOriginalNameEmbedded($file)
+    public function store2()
     {
-        $hash = Str::random(30);
-        $meta = '-meta' . base64_encode($file->getClientOriginalName()) . '-';
-        $extension = '.' . $file->guessExtension();
+        $this->validate(
+            [
+                 'title' => 'required',
+                 'description' => 'required',
+            ]
+         );
+ 
+         Koka::updateOrCreate(['id' => $this->postId],[
+             'prov_id'      =>  $this->idProv,
+             'nama_kotkab' => $this->title,
+             'desk_kk' => $this->description,
+ 
+         ]);
+ 
+         $this->hideAdd();
+ 
+         session()->flash('info', 'Successfully' );
+ 
+         $this-> postId=null;
+         $this-> title='';
+         $this-> description='';
 
-        return $hash . $meta . $extension;
+       
+
     }
+    
+
+   
 }
