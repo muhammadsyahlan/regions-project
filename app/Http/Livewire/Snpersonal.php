@@ -36,25 +36,31 @@ class Snpersonal extends Component
         
         $content = $this->keterangan;
         $dom = new \DOMDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        @$dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        
+
         $imageFile = $dom->getElementsByTagName('img');
         
     
         foreach($imageFile as $item => $image){
             $data = $image->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imageData = base64_decode($data);
-            $image_name= "/storage/public/person/".time().$item.'.png';
-            $path = public_path() . $image_name;
-            //$imageData->store($path);
-            file_put_contents($path, $imageData);
-            
-            $new_src=asset($image_name);
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $new_src);
-
-            }
+                if (!strpos($data, 'http') ) {
+                    
+                }
+                else{
+                    list($type, $data) = explode(';', $data);
+                    list(, $data)      = explode(',', $data);
+                    $imageData = base64_decode($data);
+                    $image_name= "/storage/public/person/".time().$item.'.png';
+                    $path = public_path() . $image_name;
+                    //$imageData->store($path);
+                    file_put_contents($path, $imageData);
+                    
+                    $new_src=asset($image_name);
+                    $image->removeAttribute('src');
+                    $image->setAttribute('src', $new_src);
+                }
+        }
     
         $content = $dom->saveHTML();
         //$content->store('public');
