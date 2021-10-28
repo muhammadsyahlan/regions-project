@@ -14,11 +14,13 @@ class Provinsi extends Component
 
     public $data;
     public $is_open = 0;
-    public $postId, $title, $description, $logo;
+    public $postId, $title, $description, $logo, $logoedit;
     public $is_view = 0;
     public $is_add = 0;
     public $dataView;
     public $idProv;
+    public $edit_open = 0;
+    
 
 
     public function render()
@@ -69,7 +71,7 @@ class Provinsi extends Component
 
         $filename = $this->logo->store('public/prov');
 
-        Prov::updateOrCreate(['id' => $this->postId], [
+        Prov::select('*')->insert([
             'nama_prov' => $this->title,
             'deskripsi' => $this->description,
             'logo' => $filename
@@ -89,6 +91,23 @@ class Provinsi extends Component
 
     }
 
+    //edit
+
+    public function showEdit()
+    {
+        $this->edit_open = true;
+    }
+
+    public function hideEdit()
+    {
+        $this->edit_open = false;
+
+        $this->postId = null;
+        $this->title = '';
+        $this->description = '';
+        $this->logo = '';
+    }
+
     public function edit($id)
     {
 
@@ -99,7 +118,55 @@ class Provinsi extends Component
         $this->description = $data->deskripsi;
         $this->logo = $data->logo;
 
-        $this->showModal();
+        $this->showEdit();
+    }
+
+    public function editLogo()
+    {
+
+        $this->logo = null;
+    }
+
+    //update
+
+    public function update()
+    {
+        $this->validate(
+            [
+                'title' => 'required',
+                'description' => 'required',
+            ]
+        );
+
+        $cari = strpos($this->logo, 'public/prov');
+
+        if($cari !== false ) {
+
+            $filename = $this->logo;
+
+        }
+        else {
+            
+            $filename = $this->logoedit->store('public/prov');
+            
+        }
+
+        Prov::select('*')->where('id', $this->postId )
+        ->update([
+            'nama_prov' => $this->title,
+            'deskripsi' => $this->description,
+            'logo' => $filename
+        ]);
+       
+
+        $this->hideEdit();
+
+        session()->flash('info', 'Successfully');
+
+        $this->postId = null;
+        $this->title = '';
+        $this->description = '';
+        $this->logo = '';
     }
 
     public function delete($id)
@@ -115,7 +182,7 @@ class Provinsi extends Component
         redirect()->route('vprovinsi',['id' => $id]);
     }
 
-    
+    //kotkabAdd
 
     public function showAdd()
     {

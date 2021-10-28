@@ -17,6 +17,9 @@
                                     @if ($is_open)
                                         @include('livewire.provinsi.create')
                                     @endif
+                                    @if ($edit_open)
+                                        @include('livewire.provinsi.edit')
+                                    @endif
                                     @if (session()->has('info'))
                                         <div class="bg-green-500 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
                                             <div>
