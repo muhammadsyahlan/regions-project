@@ -43,10 +43,12 @@
                             @if($logo !== null )
                             
                             <img src="{{ asset('storage/'.$logo) }}"  width="100" height="200">
+                            
+                            
                             <button wire:click="editLogo()" type="button">Edit Logo</button>
                             @else
-                            <input wire:model="logoedit" type="file">
-                            @error('logoedit') <span class="error">{{ $message }}</span> @enderror
+                            <input wire:model="logo" type="file">
+                            
                             @endif
                             
                         </div>

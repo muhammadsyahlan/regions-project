@@ -14,7 +14,7 @@ class Provinsi extends Component
 
     public $data;
     public $is_open = 0;
-    public $postId, $title, $description, $logo, $logoedit;
+    public $postId, $title, $description, $logo;
     public $is_view = 0;
     public $is_add = 0;
     public $dataView;
@@ -138,6 +138,8 @@ class Provinsi extends Component
             ]
         );
 
+        /*
+
         $cari = strpos($this->logo, 'public/prov');
 
         if($cari !== false ) {
@@ -150,6 +152,21 @@ class Provinsi extends Component
             $filename = $this->logoedit->store('public/prov');
             
         }
+        */
+
+        $prov = Prov::findOrFail($this->postId);
+
+        if($this->logo != $prov->logo) {
+            $filename = $this->logo->store('public/prov');
+        }
+        else {
+            $filename = $this->logo;
+        }
+
+        
+
+        
+
 
         Prov::select('*')->where('id', $this->postId )
         ->update([
@@ -164,9 +181,9 @@ class Provinsi extends Component
         session()->flash('info', 'Successfully');
 
         $this->postId = null;
-        $this->title = '';
-        $this->description = '';
-        $this->logo = '';
+        $this->title = null;
+        $this->description = null;
+        $this->logo = null;
     }
 
     public function delete($id)
